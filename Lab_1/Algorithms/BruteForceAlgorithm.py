@@ -25,6 +25,6 @@ class BrutForceAlgorithm:
         closest_node = (nodes[0], float('inf'))
         for n in nodes:
             distance = sqrt((node.x - n.x) ** 2 + (node.y - n.y) ** 2)
-            if closest_node[1] < distance:
+            if closest_node[1] > distance:
                 closest_node = (n, distance)
         return closest_node[0]
