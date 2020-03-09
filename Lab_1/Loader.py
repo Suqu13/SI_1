@@ -5,7 +5,7 @@ class Loader:
     def load(self, file_name) -> list:
         f = open(file_name, 'r')
         all_data = [element.strip() for element in f.readlines()]
-        nodes_data = all_data[7:len(all_data) - 1]
+        nodes_data = all_data[6:len(all_data) - 1]
         nodes = [self.__create_node(node_data) for node_data in nodes_data]
         f.close()
         return nodes
