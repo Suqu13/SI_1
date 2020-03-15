@@ -1,24 +1,20 @@
 from math import sqrt
-from random import choice
 
-from Lab_1.Individual import Individual
-from Lab_1.Node import Node
+from Individual import Individual
+from Node import Node
 
 
 class GreedyAlgorithm:
 
-    def run(self, nodes) -> Individual:
-        node = choice(nodes)
-        # node = nodes[84]
+    def run(self, initial_node, nodes) -> Individual:
         internal_nodes = nodes[:]
-        internal_nodes.remove(node)
-        return Individual(self.__evaluate(node, internal_nodes))
+        return Individual(self.__evaluate(initial_node, internal_nodes))
 
     def __evaluate(self, node, nodes) -> []:
-        best_genotype = []
+        best_genotype = [node]
         while len(nodes) != 0:
-            best_genotype.append(node)
             node = self.__find_closest(nodes, node)
+            best_genotype.append(node)
             nodes.remove(node)
         return best_genotype
 

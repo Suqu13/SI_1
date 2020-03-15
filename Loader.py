@@ -1,4 +1,4 @@
-from Lab_1.Node import Node
+from Node import Node
 
 
 class Loader:
