@@ -4,5 +4,3 @@ class Node:
         self.x = x
         self.y = y
 
-    def sum(self, z):
-        print(self.x + self.y + z)
