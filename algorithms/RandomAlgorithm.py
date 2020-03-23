@@ -1,8 +1,8 @@
-from random import shuffle, choice
+from random import shuffle
 from typing import List
 
-from Individual import Individual
-from Node import Node
+from models.Individual import Individual
+from models.Node import Node
 
 
 class RandomAlgorithm:

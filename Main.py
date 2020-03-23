@@ -4,24 +4,27 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import matplotlib.patches as mpatches
 from matplotlib.figure import Figure
 
-from Algorithms.EaAlgorithm import EaAlgorithm
-from CrossoverResolver import CrosserOX
-from Loader import Loader
-from MutationResolver import InversionMutator, SwapMutator
-from PlotDrawer import PlotDrawer
-from ProbabilitiesCounter import SimpleProbabilitiesCounter
-from SelectionResolver import RouletteSelector
+from algorithms.EaAlgorithm import EaAlgorithm
+from resolvers.CrossoverResolver import CrosserOX
+from utils.FileWriter import FileWriter
+from utils.Loader import Loader
+from resolvers.MutationResolver import InversionMutator, SwapMutator
+from utils.PlotDrawer import PlotDrawer
+from utils.ProbabilitiesCounter import SimpleProbabilitiesCounter
+from resolvers.SelectionResolver import RouletteSelector
 
 
 def run():
     loader = Loader()
+    file_writer = FileWriter()
+
     if validate():
         try:
-            file_path = 'TSP/' + filename_read.get()
+            file_name = filename_read.get()
+            file_path = 'TSP/' + file_name
             nodes = loader.load(file_path)
             selector = RouletteSelector()
             crosser = CrosserOX()
-            message.config(text="Evaluating...", fg="#6D9396")
             if mutator_val.get() == 1:
                 mutator = SwapMutator()
             else:
@@ -43,6 +46,7 @@ def run():
             try:
                 plot_drawer = PlotDrawer()
                 statistics = ea_algorithm.run()
+                file_writer.write(statistics, file_name)
                 plot_drawer.draw(statistics, plotter, received_canvas)
                 message.config(text="Success!", fg="#5CB85C")
             except:
@@ -156,11 +160,13 @@ if __name__ == "__main__":
     swap_mutator = tk.Radiobutton(mutation_mode_pane, text="Swap", variable=mutator_val, value=1)
     swap_mutator.select()
     swap_mutator.pack(side=tk.TOP, fill=tk.BOTH)
-    swap_mutator.configure(background='#595959', activebackground='#595959')
+    swap_mutator.configure(background='#595959', activebackground='#595959', selectcolor='#D4A72B',
+                           highlightthickness='0')
     inversion_mutator = tk.Radiobutton(mutation_mode_pane, text="Inversion", variable=mutator_val, value=2)
     inversion_mutator.select()
     inversion_mutator.pack(side=tk.TOP, fill=tk.BOTH, pady=(0, 20))
-    inversion_mutator.configure(background='#595959', activebackground='#595959')
+    inversion_mutator.configure(background='#595959', activebackground='#595959', selectcolor='#D4A72B',
+                                highlightthickness='0')
 
     iteration_number = tk.IntVar(root)
     iteration_number_entry = create_input(iteration_number, "Iterations number: ")
@@ -191,7 +197,7 @@ if __name__ == "__main__":
     button_pane.pack(side=tk.BOTTOM, fill=tk.BOTH, padx=50, pady=(0, 30))
     button_pane.configure(background='#595959')
 
-    tk.Button(button_pane, text="Run", width=25, command=run, bg="#D4A72B",
+    tk.Button(button_pane, text="Run!", width=25, command=run, bg="#D4A72B",
               activebackground="#E1C26C",
               activeforeground="#ffffff",
               fg="#ffffff").pack(side=tk.TOP, fill=tk.BOTH)

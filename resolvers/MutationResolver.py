@@ -1,6 +1,6 @@
 from random import randrange
 
-from Individual import Individual
+from models.Individual import Individual
 
 
 class Mutator:
@@ -24,9 +24,6 @@ class InversionMutator(Mutator):
         length = len(individual.nodes)
         first_index = randrange(start=0, stop=length)
         second_index = randrange(start=first_index, stop=length)
-        inverted_nodes = individual.nodes[first_index:second_index]
-        inverted_nodes.reverse()
-        mutated_nodes = individual.nodes[:]
-        for i in range(first_index, second_index):
-            mutated_nodes[i] = inverted_nodes[i - first_index]
+        mutated_nodes = individual.nodes[:first_index] + individual.nodes[first_index:second_index][
+                                                             ::-1] + individual.nodes[second_index:]
         return Individual(mutated_nodes)

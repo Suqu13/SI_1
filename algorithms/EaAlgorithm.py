@@ -4,15 +4,15 @@ from random import random
 
 import copy
 
-from Algorithms.GreedyAlgorithm import GreedyAlgorithm
-from Algorithms.RandomAlgorithm import RandomAlgorithm
-from CrossoverResolver import Crosser
-from Individual import Individual
-from MutationResolver import Mutator
-from Node import Node
-from ProbabilitiesCounter import ProbabilitiesCounter
-from SelectionResolver import Selector
-from StatisticsCalculator import StatisticsCalculator, Statistic
+from algorithms.GreedyAlgorithm import GreedyAlgorithm
+from algorithms.RandomAlgorithm import RandomAlgorithm
+from resolvers.CrossoverResolver import Crosser
+from models.Individual import Individual
+from resolvers.MutationResolver import Mutator
+from models.Node import Node
+from utils.ProbabilitiesCounter import ProbabilitiesCounter
+from resolvers.SelectionResolver import Selector
+from utils.StatisticsCalculator import StatisticsCalculator, Statistic
 
 
 class EaAlgorithm:

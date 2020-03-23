@@ -1,10 +1,9 @@
-import copy
 from math import sqrt
 from typing import List
 from random import choice
 
-from Individual import Individual
-from Node import Node
+from models.Individual import Individual
+from models.Node import Node
 
 
 class GreedyAlgorithm:

@@ -1,7 +1,7 @@
 from math import sqrt
 from typing import List
 
-from Node import Node
+from models.Node import Node
 
 
 class Individual:

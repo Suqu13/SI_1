@@ -2,7 +2,7 @@ from typing import List
 
 import matplotlib.patches as mpatches
 
-from StatisticsCalculator import Statistic
+from utils.StatisticsCalculator import Statistic
 
 class PlotDrawer:
     def draw(self, stats: List[Statistic], plotter, canvas):

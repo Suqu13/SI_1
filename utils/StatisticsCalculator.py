@@ -1,6 +1,6 @@
 from typing import List
 
-from Individual import Individual
+from models.Individual import Individual
 
 
 class Statistic:

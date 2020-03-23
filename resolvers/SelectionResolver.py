@@ -1,7 +1,7 @@
 from typing import List
 import numpy as np
 
-from Individual import Individual
+from models.Individual import Individual
 
 
 class Selector:

@@ -1,7 +1,6 @@
-import copy
 from random import randrange
 
-from Individual import Individual
+from models.Individual import Individual
 
 
 class Crosser:

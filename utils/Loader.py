@@ -1,4 +1,4 @@
-from Node import Node
+from models.Node import Node
 
 
 class Loader:
