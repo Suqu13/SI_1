@@ -13,5 +13,5 @@ class Statistic:
 
 class StatisticsCalculator:
     def calculate(self, population: List[Individual], iteration_number: int) -> Statistic:
-        distances = [individual.resolve() for individual in population]
+        distances = [individual.distance for individual in population]
         return Statistic(iteration_number, min(distances), sum(distances) / len(distances), max(distances))

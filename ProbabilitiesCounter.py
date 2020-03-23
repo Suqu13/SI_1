@@ -1,3 +1,4 @@
+import math
 from typing import List
 
 from Individual import Individual
@@ -10,6 +11,6 @@ class ProbabilitiesCounter:
 
 class SimpleProbabilitiesCounter(ProbabilitiesCounter):
     def count(self, population: List[Individual]) -> List[float]:
-        distances = [individual.resolve() for individual in population]
-        sum_distances = sum(distances)
-        return [distance / sum_distances for distance in distances]
+        squared_distances = [math.sqrt(individual.distance) for individual in population]
+        sum_distances = sum(squared_distances)
+        return [distance / sum_distances for distance in squared_distances]

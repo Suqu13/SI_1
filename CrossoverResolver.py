@@ -1,4 +1,5 @@
-import random
+import copy
+from random import randrange
 
 from Individual import Individual
 
@@ -11,11 +12,11 @@ class Crosser:
 class CrosserOX(Crosser):
     def crossover(self, first_individual: Individual, second_individual: Individual) -> Individual:
         length = len(first_individual.nodes)
-        first_index = random.randrange(start=0, stop=length)
-        second_index = random.randrange(start=first_index, stop=length)
+        first_index = randrange(start=0, stop=length)
+        second_index = randrange(start=first_index, stop=length)
         subnodes = first_individual.nodes[first_index:second_index]
         nodes = second_individual.nodes[:]
         for node in subnodes:
             nodes.remove(node)
-        pasting_index = random.randrange(start=0, stop=(len(nodes)))
+        pasting_index = randrange(start=0, stop=length)
         return Individual(nodes[:pasting_index] + subnodes + nodes[pasting_index:])
